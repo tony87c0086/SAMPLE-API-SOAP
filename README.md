@@ -1,10 +1,8 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
-
 ### What is this repository for? ###
 
-* This is a public repository for demonstrating REST API development using JAVA Spring + Hibernate.
+* This is a public repository for demonstrating SOAP API development using JAVA Spring + Hibernate.
 * I am more than happy and welcome for any suggestions and improvements. 
 * Version 1.0.1
 
@@ -22,7 +20,7 @@ This README would normally document whatever steps are necessary to get your app
 
 * Hibernate Entity + DAO + Implementation
 * Manager + Service 
-* REST API -- followed by REST API best Practical Guidelines
+* SOAP API -- followed by SOAP API best Practical Guidelines
 * Utility tools
 * XML model from XSD Schema
 * Basic request & data validation 
