@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security.xsd">
+	
+	<beans:description>
+		This application context XML file contains WS-Security and Spring Security beans
+	</beans:description>
+	
+	<global-method-security secured-annotations="enabled" />
+	
+	<http pattern="/" security="none"/>
+	<http pattern="/index.jsp" security="none"/>
+	<http pattern="/api/moreinfo/*" security="none"/>
+	
+	<http auto-config="true" create-session="stateless" use-expressions="true">
+		<intercept-url pattern='/api/*' access="hasAnyRole('ROLE_USER, ROLE_CLIENT, ROLE_ADMIN')"/>
+		
+		<custom-filter ref="customBasicAuthenticationFilter" before="BASIC_AUTH_FILTER" />
+		
+		<csrf disabled="true"/>
+	</http>	
+	
+	<authentication-manager id="customAuthenticationManager">
+        <authentication-provider ref="customAuthenticationProvider">
+        </authentication-provider>
+    </authentication-manager>
+    
+    <beans:bean id="customAuthenticationEntryPoint" class="org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint">
+    	<beans:property name="realmName" value="www.uknowho.com" />
+    </beans:bean> 
+    
+	<beans:bean id="customBasicAuthenticationFilter" class="com.uknowho.sample.soap.filter.CustomBasicAuthenticationFilter">
+        <beans:constructor-arg name="customAuthenticationManager" ref="customAuthenticationManager" />
+        <beans:constructor-arg name="customAuthenticationEntryPoint" ref="customAuthenticationEntryPoint" />
+    </beans:bean>
+    
+	<beans:bean id="authenticationAdvice" class="com.uknowho.sample.soap.advice.AuthenticationAdvice"></beans:bean>
+   	<beans:bean id="customUserDetailService" class="com.uknowho.sample.soap.security.CustomUserDetailService"></beans:bean>
+   	<beans:bean id="customAuthenticationProvider" class="com.uknowho.sample.soap.security.CustomAuthenticationProvider">
+   		<beans:constructor-arg ref="customUserDetailService"></beans:constructor-arg>
+   		<beans:constructor-arg ref="bCryptEncoder"></beans:constructor-arg>
+   	</beans:bean>
+</beans:beans>

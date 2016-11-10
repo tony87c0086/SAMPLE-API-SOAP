@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+						xmlns:sample="http://www.uknowho.com/sampleSOAP"
+						elementFormDefault="qualified"
+						targetNamespace="http://www.uknowho.com/sampleSOAP">
+	
+	<!-- GET CATALOGUE REQUEST & RESPONSE BEGIN -->
+	<xs:element name="getCatalogueRequest">
+		<xs:complexType>
+		    <xs:sequence>
+	    		<xs:element name="requestBody" type="sample:getCatalogueBody"/>
+		    </xs:sequence>
+	  	</xs:complexType>
+  	</xs:element>
+  	
+  	<xs:complexType name="getCatalogueBody">
+	    <xs:sequence>
+    		<xs:element name="catalogueID" type="xs:int" minOccurs="0"/>
+	    </xs:sequence>
+  	</xs:complexType>
+  	
+  	<xs:element name="getCatalogueResponse">
+	  	<xs:complexType>
+		  	<xs:sequence>
+		  		<xs:element name="catalogue" type="sample:catalogueModel"></xs:element>
+		  		<xs:element name="response" type="sample:responseModel"></xs:element>
+		  	</xs:sequence>
+	  	</xs:complexType>
+  	</xs:element>
+  	<!-- GET CATALOGUE REQUEST & RESPONSE END -->
+	
+	<!-- LIST CATALOGUE REQUEST & RESPONSE BEGIN -->
+  	<xs:element name="listCatalogueRequest">
+		<xs:complexType>
+		    <xs:sequence>
+		    	<xs:element name="requestBody" type="sample:listCatalogueBody"/>
+		    </xs:sequence>
+	  	</xs:complexType>
+  	</xs:element>
+  	
+  	<xs:complexType name="listCatalogueBody">
+	    <xs:sequence>
+	    	<xs:element name="parentID" type="xs:int" minOccurs="0"/>
+	    	<xs:element name="typeID" type="xs:int" minOccurs="0"/>
+	    	<xs:element name="groupID" type="xs:int" minOccurs="0"/>
+	    	<xs:element name="active" type="xs:boolean" minOccurs="0"/>
+	    	<xs:element name="sort" type="sample:sortModel" minOccurs="0" maxOccurs="unbounded"/>
+	    	<xs:element name="pagination" type="sample:paginationModel" minOccurs="0"/>
+	    </xs:sequence>
+  	</xs:complexType>
+  	
+  	<xs:element name="listCatalogueResponse">
+	  	<xs:complexType>
+		  	<xs:sequence>
+		  		<xs:element name="catalogueList" type="sample:catalogueModel" minOccurs="0" maxOccurs="unbounded"></xs:element>
+		  		<xs:element name="response" type="sample:responseModel"></xs:element>
+		  	</xs:sequence>
+	  	</xs:complexType>
+  	</xs:element>
+  	<!-- LIST CATALOGUE REQUEST & RESPONSE END -->
+  	
+  	<!-- SAVE CATALOGUE REQUEST & RESPONSE BEGIN -->
+  	<xs:element name="saveCatalogueRequest">
+		<xs:complexType>
+			<xs:sequence>
+	    		<xs:element name="requestBody" type="sample:saveCatalogueBody"/>
+	    	</xs:sequence>
+  		</xs:complexType>
+  	</xs:element>
+  	
+  	<xs:complexType name="saveCatalogueBody">
+	    <xs:sequence>
+	    	<xs:element name="master" type="xs:boolean" minOccurs="1" default="false"/>
+	    	<xs:choice>
+	    		<xs:element name="catalogue" type="sample:catalogueModel" minOccurs="1"/>
+	    		<xs:element name="catalogueList" type="sample:catalogueModel" minOccurs="0" maxOccurs="unbounded"/>
+	    	</xs:choice>
+	    </xs:sequence>
+  	</xs:complexType>
+  	
+  	<xs:element name="saveCatalogueResponse">
+	  	<xs:complexType>
+		  	<xs:sequence>
+		  		<xs:element name="response" type="sample:responseModel"></xs:element>
+		  	</xs:sequence>
+	  	</xs:complexType>
+  	</xs:element>
+  	<!-- SAVE CATALOGUE REQUEST & RESPONSE END -->
+  	
+  	<!-- DELETE CATALOGUE REQUEST & RESPONSE BEGIN -->
+  	<xs:element name="deleteCatalogueRequest">
+		<xs:complexType>
+		    <xs:sequence>
+		    	<xs:element name="requestBody" type="sample:deleteCatalogueBody"/>
+		    </xs:sequence>
+	  	</xs:complexType>
+  	</xs:element>
+  	
+  	<xs:complexType name="deleteCatalogueBody">
+	    <xs:sequence>
+	    	<xs:choice>
+		    	<xs:element name="catalogueID" type="xs:int" minOccurs="0"/>
+	    		<xs:element name="catalogueIDList" type="xs:int" minOccurs="0" maxOccurs="unbounded"/>
+	    	</xs:choice>
+	    </xs:sequence>
+  	</xs:complexType>
+  	
+  	<xs:element name="deleteCatalogueResponse">
+	  	<xs:complexType>
+		  	<xs:sequence>
+		  		<xs:element name="response" type="sample:responseModel"></xs:element>
+		  	</xs:sequence>
+	  	</xs:complexType>
+  	</xs:element>
+  	<!-- DELETE CATALOGUE REQUEST & RESPONSE END -->
+	
+  	<xs:complexType name="catalogueModel">
+    	<xs:sequence>
+    		<xs:element name="catalogueName" type="xs:string" nillable="true"/>
+    		<xs:element name="parentID" type="xs:int" minOccurs="0"/>
+    		<xs:element name="typeID" type="xs:int" nillable="true"/>
+    		<xs:element name="typeName" type="xs:string" nillable="true"/>
+			<xs:element name="groupID" type="xs:int" nillable="true"/>
+			<xs:element name="groupName" type="xs:string" nillable="true"/>
+			<xs:element name="sortOrder" type="xs:int" nillable="true"/>
+			<xs:element name="createdDate" type="xs:string" minOccurs="0"/>
+			<xs:element name="active" type="xs:boolean"/>
+    	</xs:sequence>
+    	<xs:attribute name="catalogueID" type="xs:int"/>	
+  	</xs:complexType>
+  	
+  	<xs:complexType name="responseModel">
+    	<xs:sequence>
+			<xs:element name="success" type="xs:boolean"/>
+			<xs:element name="recordID" type="xs:string" minOccurs="0"/>
+			<xs:element name="recordIDList" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="serviceCode" type="xs:int" minOccurs="0"/>
+			<xs:element name="moreInfo" type="xs:string" minOccurs="0"/>
+			<xs:element name="message" type="sample:messageModel" minOccurs="0" maxOccurs="unbounded"/>
+    	</xs:sequence>
+  	</xs:complexType>
+  	
+	<xs:complexType name="messageModel">
+    	<xs:sequence>
+			<xs:element name="code" type="xs:string" minOccurs="0"/>
+			<xs:element name="message" type="xs:string" minOccurs="0"/>
+    	</xs:sequence>
+  	</xs:complexType>
+  	
+  	<xs:complexType name="sortModel">
+    	<xs:sequence>
+			<xs:element name="descend" type="xs:boolean" default="true"/>
+			<xs:element name="field" type="xs:string"/>
+    	</xs:sequence>
+  	</xs:complexType>
+  	
+  	<xs:complexType name="paginationModel">
+    	<xs:sequence>
+			<xs:element name="startPage" type="xs:int" default="1"/>
+			<xs:element name="perPage" type="xs:int" default="25"/>
+			<xs:element name="firstResult" type="xs:int" default="0"/>
+			<xs:element name="maxResult" type="xs:int" default="200"/>
+    	</xs:sequence>
+  	</xs:complexType>
+  	
+  	<!-- SIMPLE TYPE MODEL BEGIN -->
+  	<xs:simpleType name="accountNameType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$"/>
+		</xs:restriction>
+  	</xs:simpleType>
+  
+  	<xs:simpleType name="passwordType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="6"></xs:minLength>
+			<xs:maxLength value="20"></xs:maxLength>
+		</xs:restriction>
+  	</xs:simpleType>
+  
+  	<xs:simpleType name="mandatoryString">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"></xs:minLength>
+			<xs:maxLength value="200"></xs:maxLength>
+		</xs:restriction>
+  	</xs:simpleType>
+  
+  	<xs:simpleType name="postCodeAUS">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9][0-9][0-9][0-9]"/>
+			<xs:minLength value="4"></xs:minLength>
+			<xs:maxLength value="4"></xs:maxLength>
+		</xs:restriction>
+  	</xs:simpleType>
+  
+  	<xs:simpleType name="emailAddress">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$"/>
+		</xs:restriction>
+  	</xs:simpleType>
+  
+  	<xs:simpleType name="frequencyType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="TODAY"></xs:enumeration>
+			<xs:enumeration value="WEEK"></xs:enumeration>
+			<xs:enumeration value="MONTH"></xs:enumeration>
+			<xs:enumeration value="YEAR"></xs:enumeration>
+			<xs:enumeration value="DAILY"></xs:enumeration>
+			<xs:enumeration value="WEEKLY"></xs:enumeration>
+			<xs:enumeration value="MONTHLY"></xs:enumeration>
+			<xs:enumeration value="YEARLY"></xs:enumeration>
+		</xs:restriction>
+  	</xs:simpleType>
+  	<!-- SIMPLE TYPE MODEL END -->
+  	
+</xs:schema>

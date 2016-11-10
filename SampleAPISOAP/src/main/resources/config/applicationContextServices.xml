@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!-- =================================================================== -->
+    <!-- AOP: Configuration and Aspects                                      -->
+    <!-- =================================================================== -->
+	<!-- Configuration for enabling Declarative Transaction Management -->
+	<!--  Note that transactionManager bean is already defined in applicationHibernateContext.xml -->
+	
+	<!--  Configure transaction advice -->
+	<tx:advice id="txSaveAdvice" transaction-manager="transactionManager" >
+		<!-- all methods starting with save are create/update methods, so read-only set to false --> 
+		<tx:attributes>
+			<tx:method name="save*" read-only="false" />
+			<tx:method name="update*" read-only="false" />
+			<tx:method name="delete*" read-only="false" />
+			<tx:method name="process*" read-only="false" propagation="REQUIRES_NEW"/>
+		</tx:attributes>
+	</tx:advice>
+	
+	<tx:advice id="txDefaultAdvice" transaction-manager="transactionManager" >
+		<!-- all methods starting with get are readonly, so runs within readonly transaction  --> 
+		<tx:attributes>
+			<tx:method name="get*" read-only="true"/>
+			<tx:method name="list*" read-only="true"/>
+			<tx:method name="fetch*" read-only="true"/>
+			<tx:method name="build*" read-only="true"/>
+			<tx:method name="create*" read-only="true"/>
+			<tx:method name="load*" read-only="true"/>
+			<tx:method name="popular*" read-only="true"/>
+			<tx:method name="copy*" read-only="true"/>
+			<tx:method name="search*" read-only="true"/>
+			<tx:method name="*" read-only="true"/>
+		</tx:attributes>
+	</tx:advice>
+	
+	<!-- Define pointcut and advisor for above defined transaction advices -->
+	<!-- Save operations for all Service managers -->
+	<aop:config>
+		<aop:pointcut expression="execution(* *..manager.*Manager.save*(..))" id="serviceSaveOperations" />
+		<aop:advisor advice-ref="txSaveAdvice" pointcut-ref="serviceSaveOperations" order="0" />
+	</aop:config>
+	<aop:config>
+		<aop:pointcut expression="execution(* *..manager.*Manager.process*(..))" id="serviceProcessOperations" />
+		<aop:advisor advice-ref="txSaveAdvice" pointcut-ref="serviceProcessOperations" order="1" />
+	</aop:config>
+	<aop:config>
+		<aop:pointcut expression="execution(* *..manager.*Manager.delete*(..))" id="serviceDeleteOperations" />
+		<aop:advisor advice-ref="txSaveAdvice" pointcut-ref="serviceDeleteOperations" order="2" />
+	</aop:config>
+	<aop:config>
+		<aop:pointcut expression="execution(* *..manager.*Manager.update*(..))" id="serviceUpdateOperations" />
+		<aop:advisor advice-ref="txSaveAdvice" pointcut-ref="serviceUpdateOperations" order="3" />
+	</aop:config>
+	
+	<!-- Get operations for all Service managers -->
+	<aop:config>
+		<aop:pointcut expression="execution(* *..manager.*Manager.get*(..))" id="serviceGetOperations"/>
+		<aop:advisor advice-ref="txDefaultAdvice" pointcut-ref="serviceGetOperations" order="4" />
+	</aop:config>
+	<aop:config>
+        <aop:pointcut expression="execution(* *..manager.*Manager.list*(..))" id="serviceListOperations"/>
+        <aop:advisor advice-ref="txDefaultAdvice" pointcut-ref="serviceListOperations" order="5" />
+    </aop:config>
+    <aop:config>
+        <aop:pointcut expression="execution(* *..manager.*Manager.fetch*(..))" id="serviceFetchOperations"/>
+        <aop:advisor advice-ref="txDefaultAdvice" pointcut-ref="serviceFetchOperations" order="6" />
+    </aop:config>
+    <aop:config>
+        <aop:pointcut expression="execution(* *..manager.*Manager.build*(..))" id="serviceBuildOperations"/>
+        <aop:advisor advice-ref="txDefaultAdvice" pointcut-ref="serviceBuildOperations" order="7" />
+    </aop:config>
+    <aop:config>
+        <aop:pointcut expression="execution(* *..manager.*Manager.create*(..))" id="serviceBuildOperations"/>
+        <aop:advisor advice-ref="txDefaultAdvice" pointcut-ref="serviceBuildOperations" order="8" />
+    </aop:config>
+    <aop:config>
+        <aop:pointcut expression="execution(* *..manager.*Manager.load*(..))" id="serviceLoadOperations"/>
+        <aop:advisor advice-ref="txDefaultAdvice" pointcut-ref="serviceLoadOperations" order="9" />
+    </aop:config>
+    <aop:config>
+        <aop:pointcut expression="execution(* *..manager.*Manager.popular*(..))" id="servicePopularOperations"/>
+        <aop:advisor advice-ref="txDefaultAdvice" pointcut-ref="servicePopularOperations" order="10" />
+    </aop:config>
+    <aop:config>
+        <aop:pointcut expression="execution(* *..manager.*Manager.copy*(..))" id="serviceCopyOperations"/>
+        <aop:advisor advice-ref="txDefaultAdvice" pointcut-ref="serviceCopyOperations" order="11" />
+    </aop:config>
+   	<aop:config>
+        <aop:pointcut expression="execution(* *..manager.*Manager.search*(..))" id="serviceSearchOperations"/>
+        <aop:advisor advice-ref="txDefaultAdvice" pointcut-ref="serviceSearchOperations" order="12" />
+    </aop:config>
+    <aop:config>
+        <aop:pointcut expression="execution(* *..manager.*Manager.*(..))" id="serviceDefaultOperations"/>
+        <aop:advisor advice-ref="txDefaultAdvice" pointcut-ref="serviceDefaultOperations" order="13" />
+    </aop:config>
+    
+	<!--  Enable @AspectJ support -->
+	<aop:aspectj-autoproxy />
+	
+	<!--  Activates scanning for @Autowired -->
+	<context:annotation-config />
+	
+	<!--  Enable @AspectJ support -->
+	<aop:aspectj-autoproxy />
+	
+</beans>

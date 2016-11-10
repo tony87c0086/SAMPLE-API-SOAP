@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<jxb:bindings 	version="2.0" 
+			    xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+			    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+			    xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+			    jxb:extensionBindingPrefixes="xjc">
+
+   	<jxb:bindings schemaLocation="src/main/resources/schema/XMLCatalogueSchema.xsd" node="/xs:schema">
+        <jxb:schemaBindings>
+            <jxb:package name="com.uknowho.sample.soap.xmlmodel" />
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    
+    <jxb:bindings>
+        <jxb:globalBindings>
+            <xjc:serializable uid="1"/>
+            
+            <!-- use Calendar instead of XMLGregorianCalendar -->
+	     <!--   
+	        <jxb:javaType name="java.util.Date" xmlType="xs:dateTime"
+	            parseMethod="com.uknowho.setting.DateAdapter.parseDateTime"
+	            printMethod="com.uknowho.setting.DateAdapter.printDateTime"/>
+	
+	        <jxb:javaType name="java.util.Date" xmlType="xs:date"
+	            parseMethod="com.uknowho.setting.DateAdapter.parseDate"
+	            printMethod="com.uknowho.setting.DateAdapter.printDate"/>
+	
+	        <jxb:javaType name="java.util.Date" xmlType="xs:time"
+	            parseMethod="com.uknowho.setting.DateAdapter.parseTime"
+	            printMethod="com.uknowho.setting.DateAdapter.printTime"/>
+          -->
+        </jxb:globalBindings>
+    </jxb:bindings>
+    
+</jxb:bindings>
