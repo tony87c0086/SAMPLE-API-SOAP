@@ -15,34 +15,22 @@
 	
 	<http pattern="/" security="none"/>
 	<http pattern="/index.jsp" security="none"/>
-	<http pattern="/api/moreinfo/*" security="none"/>
 	
-	<http auto-config="true" create-session="stateless" use-expressions="true">
+	<http auto-config="true" use-expressions="true">
 		<intercept-url pattern='/api/*' access="hasAnyRole('ROLE_USER, ROLE_CLIENT, ROLE_ADMIN')"/>
 		
-		<custom-filter ref="customBasicAuthenticationFilter" before="BASIC_AUTH_FILTER" />
-		
-		<csrf disabled="true"/>
+		<csrf disabled="true" />
+		<session-management>
+			<concurrency-control  max-sessions="5" error-if-maximum-exceeded="true" expired-url="/admin/login"  />
+		</session-management>
 	</http>	
 	
-	<authentication-manager id="customAuthenticationManager">
-        <authentication-provider ref="customAuthenticationProvider">
-        </authentication-provider>
-    </authentication-manager>
-    
-    <beans:bean id="customAuthenticationEntryPoint" class="org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint">
-    	<beans:property name="realmName" value="www.uknowho.com" />
-    </beans:bean> 
-    
-	<beans:bean id="customBasicAuthenticationFilter" class="com.uknowho.sample.soap.filter.CustomBasicAuthenticationFilter">
-        <beans:constructor-arg name="customAuthenticationManager" ref="customAuthenticationManager" />
-        <beans:constructor-arg name="customAuthenticationEntryPoint" ref="customAuthenticationEntryPoint" />
-    </beans:bean>
-    
-	<beans:bean id="authenticationAdvice" class="com.uknowho.sample.soap.advice.AuthenticationAdvice"></beans:bean>
-   	<beans:bean id="customUserDetailService" class="com.uknowho.sample.soap.security.CustomUserDetailService"></beans:bean>
-   	<beans:bean id="customAuthenticationProvider" class="com.uknowho.sample.soap.security.CustomAuthenticationProvider">
-   		<beans:constructor-arg ref="customUserDetailService"></beans:constructor-arg>
-   		<beans:constructor-arg ref="bCryptEncoder"></beans:constructor-arg>
-   	</beans:bean>
+	<authentication-manager>
+		<authentication-provider>
+		  <user-service>
+			<user name="sample" password="password" authorities="ROLE_USER" />
+		  </user-service>
+		  <!-- <password-encoder ref="bCryptEncoder"></password-encoder> -->
+		</authentication-provider>
+	</authentication-manager>
 </beans:beans>

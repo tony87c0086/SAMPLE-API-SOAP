@@ -14,7 +14,7 @@
             classpath:/config/applicationHibernateContext.xml
             classpath:/config/applicationContextServices.xml
             classpath:/config/applicationContext.xml
-            <!-- classpath:/config/applicationSecurity.xml -->
+            classpath:/config/applicationSecurity.xml
             /WEB-INF/config/root-context.xml
 		</param-value>
 	</context-param>
@@ -23,6 +23,10 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
+	
+	<session-config>
+		<session-timeout>20</session-timeout>
+	</session-config>
 
 	<!-- Processes application requests -->
 	<!--  SOAP filters  -->	
@@ -42,7 +46,6 @@
     </servlet-mapping>
 
 	<!--  Spring Security filters  -->	
- 	<!-- 
  	<filter>
 		<filter-name>springSecurityFilterChain</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
@@ -52,5 +55,5 @@
 		<filter-name>springSecurityFilterChain</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	 -->
+	
 </web-app>

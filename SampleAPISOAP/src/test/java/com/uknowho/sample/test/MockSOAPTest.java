@@ -29,7 +29,7 @@ public class MockSOAPTest extends TestCasePreload {
 	}
 	
 	@Test
-	public void listProductSummaryTest() {
+	public void mockTest() {
 		
 		StringBuffer sb = new StringBuffer();
 		sb.append("<run:listCatalogueRequest xmlns:run='" + APIPathAdvice.NAME_SPACE + "'>");

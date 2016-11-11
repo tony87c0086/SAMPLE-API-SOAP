@@ -69,14 +69,14 @@ public class Configuration extends PropertyPlaceholderConfigurer {
 	// XML model with header changes
 	public static final String XML_MODEL_GENERIC_SCHEMA_PARSE = 
 			"xjc -extension "
-			+ "src/main/resources/schema/*.xsd "
+			+ "src/main/webapp/WEB-INF/schemas/*.xsd "
 			+ "-b XMLBindings.xml "
 			+ "-d src/main/java";
 	
 	// Generate model without header changes
 	public static final String XML_MODEL_GENERIC_SCHEMA_PARSE_NO_HEADER = 
 			"xjc -extension -no-header "
-					+ "src/main/resources/schema/*.xsd "
+					+ "src/main/webapp/WEB-INF/schemas/*.xsd "
 					+ "-b XMLBindings.xml "
 					+ "-d src/main/java";
 	

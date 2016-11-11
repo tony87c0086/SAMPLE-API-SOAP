@@ -6,7 +6,7 @@
 			    xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
 			    jxb:extensionBindingPrefixes="xjc">
 
-   	<jxb:bindings schemaLocation="src/main/resources/schema/XMLCatalogueSchema.xsd" node="/xs:schema">
+   	<jxb:bindings schemaLocation="src/main/webapp/WEB-INF/schemas/XMLCatalogueSchema.xsd" node="/xs:schema">
         <jxb:schemaBindings>
             <jxb:package name="com.uknowho.sample.soap.xmlmodel" />
         </jxb:schemaBindings>
