@@ -32,9 +32,9 @@ public class MockSOAPTest extends TestCasePreload {
 	public void mockTest() {
 		
 		StringBuffer sb = new StringBuffer();
-		sb.append("<run:listCatalogueRequest xmlns:run='" + APIPathAdvice.NAME_SPACE + "'>");
-		sb.append("<run:requestBody></run:requestBody>");
-		sb.append("</run:listCatalogueRequest>");
+		sb.append("<sam:listCatalogueRequest xmlns:sam='" + APIPathAdvice.NAME_SPACE + "'>");
+		sb.append("<sam:requestBody></sam:requestBody>");
+		sb.append("</sam:listCatalogueRequest>");
 
 		try {
 	   

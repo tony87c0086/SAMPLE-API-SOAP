@@ -14,7 +14,7 @@ package com.uknowho.sample.soap.config;
 
 public class APIPathAdvice {
 
-	public static final String NAME_SPACE = "http://www.uknowho.com/xmlmodel/catalogue";
+	public static final String NAME_SPACE = "http://www.uknowho.com/sampleSOAP";
 	
 	public static final String INDEX_PAGE = "/index.jsp";
 	public static final String HOME_PAGE = "/";

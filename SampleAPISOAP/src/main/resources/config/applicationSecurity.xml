@@ -17,11 +17,11 @@
 	<http pattern="/index.jsp" security="none"/>
 	
 	<http auto-config="true" use-expressions="true">
-		<intercept-url pattern='/api/*' access="hasAnyRole('ROLE_USER, ROLE_CLIENT, ROLE_ADMIN')"/>
+		<intercept-url pattern='/*' access="hasAnyRole('ROLE_USER, ROLE_CLIENT, ROLE_ADMIN')"/>
 		
 		<csrf disabled="true" />
 		<session-management>
-			<concurrency-control  max-sessions="5" error-if-maximum-exceeded="true" expired-url="/admin/login"  />
+			<concurrency-control  max-sessions="5" error-if-maximum-exceeded="true" />
 		</session-management>
 	</http>	
 	

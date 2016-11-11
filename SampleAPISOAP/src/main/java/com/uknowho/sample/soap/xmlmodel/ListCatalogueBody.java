@@ -23,8 +23,8 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="typeID" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="groupID" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="active" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
- *         &lt;element name="sort" type="{http://www.uknowho.com/xmlmodel/catalogue}sortModel" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="pagination" type="{http://www.uknowho.com/xmlmodel/catalogue}paginationModel" minOccurs="0"/>
+ *         &lt;element name="sort" type="{http://www.uknowho.com/sampleSOAP}sortModel" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="pagination" type="{http://www.uknowho.com/sampleSOAP}paginationModel" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>

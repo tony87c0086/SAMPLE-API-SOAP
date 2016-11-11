@@ -22,8 +22,8 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="master" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *         &lt;choice>
- *           &lt;element name="catalogue" type="{http://www.uknowho.com/xmlmodel/catalogue}catalogueModel"/>
- *           &lt;element name="catalogueList" type="{http://www.uknowho.com/xmlmodel/catalogue}catalogueModel" maxOccurs="unbounded" minOccurs="0"/>
+ *           &lt;element name="catalogue" type="{http://www.uknowho.com/sampleSOAP}catalogueModel"/>
+ *           &lt;element name="catalogueList" type="{http://www.uknowho.com/sampleSOAP}catalogueModel" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;/choice>
  *       &lt;/sequence>
  *     &lt;/restriction>

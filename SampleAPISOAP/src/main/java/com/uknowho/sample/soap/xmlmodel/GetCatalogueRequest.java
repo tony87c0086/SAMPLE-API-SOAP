@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="requestBody" type="{http://www.uknowho.com/xmlmodel/catalogue}getCatalogueBody"/>
+ *         &lt;element name="requestBody" type="{http://www.uknowho.com/sampleSOAP}getCatalogueBody"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
