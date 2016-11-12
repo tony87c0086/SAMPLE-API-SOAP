@@ -19,44 +19,44 @@
 ### Structure guidelines ###
 
 * SOAP API
-  -- Refer to package(api, config)
-  -- API represents the payload of the Service.
+  * Refer to package(api, config)
+  * API represents the payload of the Service.
   
 * API security
-  -- Refer to (../src/config/securityContext.xml)
-  -- Security implemented using spring basic authentication filter.
+  * Refer to (../src/config/securityContext.xml)
+  * Security implemented using spring basic authentication filter.
   
 ### NOTE: The structure and component below is mostly same as my other REST sample. They CAN be a dependency JAR file or files depends on your application needs. This gives flexibility to swith between SOAP/REST or any other new technologies might comming. Yes, finger cross! ###
 
 * Manager + Service 
-  -- Refer to package(manager, service, abstract)
-  -- Manager is responsible for (1)DAL, (2)mapping entity to model, & (3)business logic implementation.
-  -- Manager encapsulates DAL and only output model as media to communicate.
-  -- Service is responsible for (1)pre-validating data & (2)exposing service.
+  * Refer to package(manager, service, abstract)
+  * Manager is responsible for (1)DAL, (2)mapping entity to model, & (3)business logic implementation.
+  * Manager encapsulates DAL and only output model as media to communicate.
+  * Service is responsible for (1)pre-validating data & (2)exposing service.
   
 * Hibernate Entity + DAO + Implementation
-  -- Refer to package(entity, dao, impl)
-  -- Entity represents the DB table/view structure.
-  -- DAO represents the interface signature of hibernate implementation.
-  -- Impl represents the implementation.
+  * Refer to package(entity, dao, impl)
+  * Entity represents the DB table/view structure.
+  * DAO represents the interface signature of hibernate implementation.
+  * Impl represents the implementation.
 
 * Utility tools
-  -- Refer to package(utility)
-  -- Utility represents the customized tools & date convertors for application.
+  * Refer to package(utility)
+  * Utility represents the customized tools & date convertors for application.
   
 * XML model from XSD schema
-  -- Refer to (model, ../src/main/resource/schemas, XMLBindings.xml)
-  -- Model represents the output data structure.
-  -- Model generated from XSD schema using JAXB.
+  * Refer to (model, ../src/main/resource/schemas, XMLBindings.xml)
+  * Model represents the output data structure.
+  * Model generated from XSD schema using JAXB.
 
 * Constant & configuration & exception
-  -- Refer to package(constant, config, exception)
-  -- Constant represents the constants such as error code/message, enums, etc.
-  -- Configuration represents the configuration.
-  -- Exception implements customized exceptions.
+  * Refer to package(constant, config, exception)
+  * Constant represents the constants such as error code/message, enums, etc.
+  * Configuration represents the configuration.
+  * Exception implements customized exceptions.
   
 * Application setting
-  -- Refer to (../src/main/resources/config/*, ../src/main/resources/webapp/WEB-INF/*)
+  * Refer to (../src/main/resources/config/*, ../src/main/resources/webapp/WEB-INF/*)
 
 ### Who do I talk to? ###
 
