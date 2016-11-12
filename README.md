@@ -55,6 +55,10 @@
   * Configuration represents the configuration.
   * Exception implements customized exceptions.
   
+* Unit test
+  * Refer to package(test)
+  * Test including mock, hibernate & utility
+  
 * Application setting
   * Refer to (../src/main/resources/config/*, ../src/main/resources/webapp/WEB-INF/*)
 
