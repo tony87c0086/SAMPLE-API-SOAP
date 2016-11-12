@@ -10,7 +10,6 @@ import com.uknowho.sample.soap.constant.ErrorMessageConstant;
 import com.uknowho.sample.soap.entity.Catalogue;
 import com.uknowho.sample.soap.exception.ServiceException;
 import com.uknowho.sample.soap.utility.DateAdapter;
-import com.uknowho.sample.soap.utility.IDGenerator;
 import com.uknowho.sample.soap.xmlmodel.CatalogueModel;
 
 /**
@@ -25,15 +24,12 @@ import com.uknowho.sample.soap.xmlmodel.CatalogueModel;
  * 
  */
 
-public abstract class SampleManagerAbstract {
+public abstract class ManagerAbstract {
 
-	private static final Logger logger = LoggerFactory.getLogger(SampleManagerAbstract.class);
+	private static final Logger logger = LoggerFactory.getLogger(ManagerAbstract.class);
 	
-	protected IDGenerator IDGenerator;
-	
-	protected SampleManagerAbstract() {
+	protected ManagerAbstract() {
 		//	logger.info("ManagerAbstract construction method load.");
-		IDGenerator = new IDGenerator();
 	}
 	
 	/** --------------------------------------------------------------------------------

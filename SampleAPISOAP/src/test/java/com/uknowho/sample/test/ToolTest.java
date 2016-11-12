@@ -1,8 +1,6 @@
 package com.uknowho.sample.test;
 
-import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 
@@ -14,7 +12,6 @@ import org.slf4j.LoggerFactory;
 import com.uknowho.sample.soap.constant.EnumConstant.FrequencyType;
 import com.uknowho.sample.soap.utility.DataFormat;
 import com.uknowho.sample.soap.utility.DateAdapter;
-import com.uknowho.sample.soap.utility.IDGenerator;
 
 import junit.framework.TestCase;
 
@@ -35,13 +32,10 @@ public class ToolTest extends TestCase {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ToolTest.class);
 	
-	private IDGenerator idGenerator;
-	
     @Before
 	public void setUp() {
     	logger.trace("UtilityStandardTest loading...");
     	
-    	idGenerator = new IDGenerator();
 		System.out.println("Long Min Value : " + Long.MIN_VALUE);
 		System.out.println("Long Max Value : " + Long.MAX_VALUE);
 	}
@@ -49,38 +43,6 @@ public class ToolTest extends TestCase {
     /**
 	 * Date format test begin
 	 */
-	@Test
-	public void testNumberFormat() {
-		int precision = 4;
-		double numericvalue = 1253532;
-		//Locale[] localelist = Locale.getAvailableLocales();
-		//Locale loc = new Locale("en", "IN");
-		
-		String formattedVal = DataFormat.formatNumber(numericvalue, precision, Locale.KOREA);
-		System.out.println("NumberFormat Value: " + formattedVal);
-		
-		assertTrue(true);
-	}
-	
-	@Test
-	public void testCurrencyFormat() {
-		int precision = 4;
-		double numericvalue = 1253532;
-		//Locale locale = Locale.getDefault();
-		//Locale loc = new Locale("en", "IN");
-		
-		String formattedVal = DataFormat.formatCurrency(numericvalue, precision,Locale.KOREA);
-		System.out.println("CurrencyFormat Value: " + formattedVal);
-		
-		formattedVal = DateAdapter.getShortDate(Calendar.getInstance().getTime());
-		System.out.println("DateFormat Value: " + formattedVal);
-		
-		formattedVal = DateAdapter.getShortDate(Calendar.getInstance().getTime());
-		System.out.println("TimeShort Value: " + formattedVal);
-		
-		assertTrue(true);
-	}
-	
 	@Test
 	public void testXMLCalenderToDate() {
 		Date today = new Date();
@@ -162,55 +124,4 @@ public class ToolTest extends TestCase {
 	/**
 	 * Enum test end
 	 */
-	
-    /**
-     * Random ID generator test begin
-     */
-    @Test
-	public void testGenerateIntegerID() {
-		Integer intID = 0;
-		for (int i=0;i<25;i++) {
-			intID = idGenerator.generateIntegerID(0);
-			System.out.println("testGenerateIntegerID: Integer ID Value is : " + intID);
-		}
-		assertTrue((intID != null));
-	}
-    
-    @Test
-	public void testGenerateLongID() {
-		Long smallID = 0L;
-		for (int i=0;i<25;i++) {
-			smallID = idGenerator.generateLongID();
-			System.out.println("testGenerateLongID: Long ID Value is : " + smallID);
-		}
-		assertTrue(smallID.toString().length() == 19);
-	}
-	
-	@Test
-	public void testDecodeGivenIDValue() {
-		String decodedVal = idGenerator.decodeRecordIDValue("5320211425964075640");
-		System.out.println("Decoded ID - " + decodedVal);
-		
-		decodedVal = idGenerator.
-				decodeRecordIDValue("5431176855520120686281143233760414331425964075649");
-		System.out.println("Decoded ID - " + decodedVal);
-		
-		decodedVal = idGenerator.decodeRecordIDValue("7801363032611425964075651");
-		System.out.println("Decoded ID - " + decodedVal);
-		
-		decodedVal = idGenerator.decodeRecordIDValue("2177831425954444853");
-		System.out.println("Decoded ID - " + decodedVal);
-		
-		decodedVal = idGenerator.
-				decodeRecordIDValue("2158111830432065525523426264025083171425954444863");
-		System.out.println("Decoded ID - " + decodedVal);
-		
-		decodedVal = idGenerator.decodeRecordIDValue("3055090401881425951100535");
-		System.out.println("Decoded ID - " + decodedVal);
-		
-		assertTrue(true);
-	}
-    /**
-     * Random ID generator test end
-     */
 }

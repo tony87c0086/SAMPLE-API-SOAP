@@ -28,11 +28,11 @@ import com.uknowho.sample.soap.xmlmodel.SaveCatalogueBody;
  * 
  */
 
-public abstract class SampleServiceAbstract {
+public abstract class ServiceAbstract {
 
-	private static final Logger logger = LoggerFactory.getLogger(SampleServiceAbstract.class);
+	private static final Logger logger = LoggerFactory.getLogger(ServiceAbstract.class);
 	
-	protected SampleServiceAbstract() {
+	protected ServiceAbstract() {
 		//	logger.info("ServiceAbstract construction method load.");
 	}
 	

@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.uknowho.sample.soap.abstracts.SampleManagerAbstract;
+import com.uknowho.sample.soap.abstracts.ManagerAbstract;
 import com.uknowho.sample.soap.constant.ErrorCodeConstant;
 import com.uknowho.sample.soap.constant.ErrorMessageConstant;
 import com.uknowho.sample.soap.dao.CatalogueDao;
@@ -33,7 +33,7 @@ import com.uknowho.sample.soap.xmlmodel.SortModel;
  */
 
 @Service("catalogueManager")
-public class CatalogueManager extends SampleManagerAbstract {
+public class CatalogueManager extends ManagerAbstract {
 	
 	private static final Logger logger = LoggerFactory.getLogger(CatalogueManager.class);
 	
@@ -50,8 +50,6 @@ public class CatalogueManager extends SampleManagerAbstract {
 		try {
 			
 			target = new CatalogueModel();
-
-			target.setCatalogueID(IDGenerator.generateIntegerID());
 			
 		} catch (ServiceException e) {
 			logger.error(e.toString());

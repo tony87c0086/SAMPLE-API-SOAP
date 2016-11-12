@@ -1,11 +1,8 @@
 package com.uknowho.sample.soap.utility;
 
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -98,21 +95,6 @@ public class DataFormat {
 			e.printStackTrace();
 		}
 		return formatSize;
-	}
-	
-	// Input : 		   https://www.dropbox.com/s/v65vsx4iztv7k0h/image03.png?dl=0
-	// Except Output : https://dl.dropbox.com/s/v65vsx4iztv7k0h/image03.png
-	public static String getDropboxStaticURL(final String url) {
-		String staticURL = null;
-		try {
-			staticURL = url;
-			staticURL = staticURL.replaceFirst("www", "dl");
-			staticURL = staticURL.substring(0, staticURL.length() - 5);
-		} catch (Exception e) {
-			staticURL = null;
-			logger.error(e.toString());
-		}
-		return staticURL;
 	}
 	
 	public static String convertStringFromLong(final long longvalue) {
@@ -254,38 +236,4 @@ public class DataFormat {
 		return valid;
 	}
 	
-	public static String formatNumber(
-			double numericvalue, 
-			int precision, 
-			Locale locale) {
-		String formattedValue = null;
-		/**
-		 * Getting NumberFormat instance here, supposed to be thread safe.
-		 * If at all any issues are encountered, it is recommended to execute code 
-		 * in synchronized block by declaring NumberFormat nf as class variable.
-		 */
-		NumberFormat nf = NumberFormat.getNumberInstance(locale);
-		nf.setMinimumFractionDigits(precision);
-		nf.setMaximumFractionDigits(precision);
-		formattedValue = nf.format(numericvalue);
-		return formattedValue;
-	}
-	
-	public static String formatCurrency(
-			double numericvalue, 
-			int precision, 
-			Locale locale) {
-		String formattedValue = null;
-		/**
-		 * Getting NumberFormat instance here, supposed to be thread safe.
-		 * If at all any issues are encountered, it is recommended to execute code 
-		 * in synchronized block by declaring NumberFormat cf as class variable.
-		 */
-		DecimalFormat cf = (DecimalFormat) NumberFormat.getCurrencyInstance(locale);
-		cf.setMinimumFractionDigits(precision);
-		cf.setMaximumFractionDigits(precision);
-		cf.setDecimalSeparatorAlwaysShown(true);
-		formattedValue = cf.format(numericvalue);
-		return formattedValue;
-	}
 }

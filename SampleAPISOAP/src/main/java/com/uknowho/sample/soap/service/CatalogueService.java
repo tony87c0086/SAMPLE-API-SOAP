@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateOptimisticLockingFailureException;
 import org.springframework.stereotype.Service;
 
-import com.uknowho.sample.soap.abstracts.SampleServiceAbstract;
+import com.uknowho.sample.soap.abstracts.ServiceAbstract;
 import com.uknowho.sample.soap.config.Configuration;
 import com.uknowho.sample.soap.constant.ErrorCodeConstant;
 import com.uknowho.sample.soap.constant.ErrorMessageConstant;
@@ -40,7 +40,7 @@ import com.uknowho.sample.soap.xmlmodel.SortModel;
  */
 
 @Service("catalogueService")
-public class CatalogueService extends SampleServiceAbstract {
+public class CatalogueService extends ServiceAbstract {
 	
 	private static final Logger logger = LoggerFactory.getLogger(CatalogueService.class);
 

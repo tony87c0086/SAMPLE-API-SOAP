@@ -21,18 +21,8 @@ import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 
 public class Configuration extends PropertyPlaceholderConfigurer {
 
-	public static final String DEFAULT_PROPERTY_VALUE = "0";
-	public static final int SINGLE_RECORD_COUNT = 1;
-	public static final int DEFAULT_INVALID_ATTEMPT = 0;
-	public static final int MAX_INVALID_ATTEMPT = 50;
-	
 	public static final int MIN_DEFAULT_RETURN_RECORD = 0;
 	public static final int MAX_DEFAULT_RETURN_RECORD = 50;
-	
-	// HTTP setting
-	public static final String DEFAULT_AJAX_HEADER_NAME = "X-Requested-With";
-	public static final String DEFAULT_AJAX_HEADER_CONTENT = "XMLHttpRequest";
-	public static final int DEFAULT_AJAX_TIMEOUT_CODE = 998;
 	
 	// Service code setting
 	public static final int CATALOGUE_SERVICE_CODE = 10;
@@ -44,24 +34,16 @@ public class Configuration extends PropertyPlaceholderConfigurer {
 	public static final String MEGABYTE_UNIT = "MB";
 	
 	public static final int LONG_RECORDID_LENGTH = 19;
-	public static final long DEFAULT_LONG_ID = 9223372036854775807L;
 	public static final int MILLISECONDS_DATE_LENGTH = 13;
 	
 	public static final String DATE_FORMAT_STRING = "yyyy-MM-dd";
 	public static final String TIME_FORMAT_STRING = "HH:mm:ss";
 	public static final String DATETIME_FORMAT_STRING = "yyyy-MM-dd HH:mm:ss";
 	
-	public static final String SORT_DESCEND_PREFIX = "-";
-	public static final int SORT_ASC_FIELD_INDEX = 0;
-	public static final int SORT_DESCEND_FIELD_INDEX = 1;
-	
 	// Pattern matching
-	public static final String NUMBER_SPACE_WITHOUT_NULL = "^[0-9 ]+$";
 	public static final String NUMBER_SPACE_WITH_NULL = "^(?:[0-9 ]*)$";
 	public static final String EMAIL_WITHOUT_NULL = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)"
 			+ "*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-	public static final String EMAIL_WITH_NULL = "^(?:[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)"
-			+ "*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$|)";
 	
 	public static final String PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$";
 	public static final String STRING_VALID_PATTERN = "^[A-Za-z0-9 _-]*$";
