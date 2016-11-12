@@ -33,15 +33,11 @@ public class Configuration extends PropertyPlaceholderConfigurer {
 	public static final double FILE_SIZE_CURRENCY = 1024;
 	public static final String MEGABYTE_UNIT = "MB";
 	
-	public static final int LONG_RECORDID_LENGTH = 19;
-	public static final int MILLISECONDS_DATE_LENGTH = 13;
-	
 	public static final String DATE_FORMAT_STRING = "yyyy-MM-dd";
 	public static final String TIME_FORMAT_STRING = "HH:mm:ss";
 	public static final String DATETIME_FORMAT_STRING = "yyyy-MM-dd HH:mm:ss";
 	
 	// Pattern matching
-	public static final String NUMBER_SPACE_WITH_NULL = "^(?:[0-9 ]*)$";
 	public static final String EMAIL_WITHOUT_NULL = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)"
 			+ "*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 	
