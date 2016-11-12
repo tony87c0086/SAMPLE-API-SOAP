@@ -23,7 +23,7 @@
   * API represents the payload of the Service.
   
 * API security
-  * Refer to (../src/config/securityContext.xml)
+  * Refer to (../src/main/resources/config/applicationSecurity.xml)
   * Security implemented using spring basic authentication filter.
   
 ### NOTE: The structure and component below is mostly same as my other REST sample. They CAN be a dependency JAR file or files depends on your application needs. This gives flexibility to swith between SOAP/REST or any other new technologies might comming. Yes, finger cross! ###
