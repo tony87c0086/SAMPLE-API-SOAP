@@ -9,437 +9,133 @@
 	<name>Sample API SOAP</name>
 	<url>http://maven.apache.org</url>
 	
+	<parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.4.2.RELEASE</version>
+    </parent>
+	
 	<properties>
 	  	<!-- Generic properties -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		
 		<!-- Java & Spring properties -->
-    	<jdk.version>1.8</jdk.version>
-		<spring.version>4.3.1.RELEASE</spring.version>
-		<spring.security.version>4.1.1.RELEASE</spring.security.version>
-		<spring.ws.version>2.3.0.RELEASE</spring.ws.version>
-		<spring.wstest.version>2.2.0.RELEASE</spring.wstest.version>
-		
-		<!-- Hibernate / JPA properties -->
-		<hibernate.version>4.3.11.Final</hibernate.version>
-		<hibernate.search.version>4.4.6.Final</hibernate.search.version>
-		<jpa.version>2.0</jpa.version>
-		<mysql.connector.version>5.1.38</mysql.connector.version>
-		
-		<!-- Apache and commons -->
-		<commons.beanutils.version>1.9.2</commons.beanutils.version>
-		<commons.collections.version>3.2.1</commons.collections.version>
-		<commons.lang.version>2.6</commons.lang.version>
-		<commons.codec.version>1.10</commons.codec.version>
-		<commons.dbcp.version>1.4</commons.dbcp.version>
-		<commons.file.upload.version>1.3.1</commons.file.upload.version>
-		<commons.io.version>2.4</commons.io.version>
-		
-		<apache.velocity.version>1.7</apache.velocity.version>
-		<apache.cxf.version>3.0.3</apache.cxf.version>
-		<apache.httpclient.version>4.4.1</apache.httpclient.version>
-		
-		<!-- JSTL & Servlet properties -->
-		<javax.jsp.version>2.2</javax.jsp.version>
-		<javax.jstl.version>1.2</javax.jstl.version>
-		<javax.servlet.version>3.1.0</javax.servlet.version>
-		<javax.validation.version>1.1.0.Final</javax.validation.version>
-		<javax.mail.version>1.4.7</javax.mail.version>
-		<javax.inject.version>1</javax.inject.version>
-		<javax.wsrs.version>2.0</javax.wsrs.version>
-		
-		<!-- Jackson JSON properties -->
-		<jackson.fastxml.version>2.7.0</jackson.fastxml.version>
-		
-		<!-- Tag Lib -->
-		<tag.lib.version>1.1.2</tag.lib.version>
-		
-		<!-- Logging properties -->
-		<logback.version>1.1.3</logback.version>
-		<jcl.slf4j.version>1.7.5</jcl.slf4j.version>
-		
-		<!-- Aspect properties -->		
-		<org.aspectj.version>1.7.2</org.aspectj.version>
-		
-		<!-- Unit Test properties -->
-		<junit.version>4.12</junit.version>
+    	<java.version>1.8</java.version>
+    	<javax-wsrs.version>2.0</javax-wsrs.version>
 		
 		<!-- Internal JARS properties -->
 		<uknowho.component.version>1.0.1-SNAPSHOT</uknowho.component.version>
-		
-		<!-- Swagger 2 properties -->
-		
-		<!-- Unused properties here -->
-		<!-- The transaction company properties -->
-		<transaction.cors.version>2.1.2</transaction.cors.version>
-		<transaction.utils.version>1.9.1</transaction.utils.version>
-		
-		<!-- Jersey properties -->
-		<glassfish.jersey.version>2.23.1</glassfish.jersey.version>
 	</properties>
 	
 	<dependencies>
-		<!-- Spring Dependency Begin -->
-    	<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-core</artifactId>
-			<version>${spring.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>commons-logging</groupId>
-					<artifactId>commons-logging</artifactId>
-				</exclusion>
-			</exclusions>
+		<dependency>
+    		<groupId>org.springframework.boot</groupId>
+    		<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-			<version>${spring.version}</version>
-			<exclusions>
-				<!-- Exclude Commons Logging in favor of SLF4j -->
-				<exclusion>
-					<groupId>commons-logging</groupId>
-					<artifactId>commons-logging</artifactId>
-				 </exclusion>
-			</exclusions>
+    		<groupId>org.springframework.boot</groupId>
+    		<artifactId>spring-boot-starter-web-services</artifactId>
 		</dependency>
 		
 		<dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
+    		<groupId>org.springframework.boot</groupId>
+    		<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
 		
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-web</artifactId>
-			<version>${spring.version}</version>
+    		<groupId>org.springframework.boot</groupId>
+    		<artifactId>spring-boot-starter-data-rest</artifactId>
+		</dependency>
+		
+		<dependency>
+    		<groupId>org.springframework.boot</groupId>
+    		<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+		
+		<dependency>
+    		<groupId>org.springframework.boot</groupId>
+    		<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		
+		<dependency>
+    		<groupId>org.springframework.boot</groupId>
+    		<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-hateoas</artifactId>
 		</dependency>
 	
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
-			<version>${spring.version}</version>
+    		<groupId>org.springframework.boot</groupId>
+    		<artifactId>spring-boot-starter-log4j2</artifactId>
+		</dependency>
+	
+		<dependency>
+    		<groupId>org.springframework.boot</groupId>
+    		<artifactId>spring-boot-starter-test</artifactId>
 		</dependency>
 		
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-jdbc</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
+				<groupId>org.springframework.ws</groupId>
+				<artifactId>spring-ws-test</artifactId>
+				<exclusions>
+					<exclusion>
+						<groupId>commons-logging</groupId>
+						<artifactId>commons-logging</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
 		
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-orm</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-tx</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		
-		<dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aspects</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-        
-        <dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-web</artifactId>
-			<version>${spring.security.version}</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-core</artifactId>
-			<version>${spring.security.version}</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-config</artifactId>
-			<version>${spring.security.version}</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-ldap</artifactId>
-			<version>${spring.security.version}</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-taglibs</artifactId>
-			<version>${spring.security.version}</version>
-		</dependency>
-        
-        <dependency>
-			<groupId>org.springframework.ws</groupId>
-			<artifactId>spring-ws-core</artifactId>
-			<version>${spring.ws.version}</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.springframework.ws</groupId>
-			<artifactId>spring-ws-security</artifactId>
-			<version>${spring.ws.version}</version>
-		</dependency>
-        
-        <dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
-			<version>${spring.version}</version>
-			<scope>test</scope>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.springframework.ws</groupId>
-			<artifactId>spring-ws-test</artifactId>
-			<version>${spring.wstest.version}</version>
-		</dependency>
-		<!-- Spring Dependency End -->
-		
-		<!-- Hibernate Dependency Begin -->
-		<dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>${hibernate.version}</version>
-        </dependency>
-        
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
-			<version>${hibernate.version}</version>
-		</dependency>
-		
-		<dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-search</artifactId>
-            <version>${hibernate.search.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>hibernate-core</artifactId>
-                    <groupId>org.hibernate</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-search-analyzers</artifactId>
-            <version>${hibernate.search.version}</version>
-        </dependency>
-        
-		<dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-ehcache</artifactId>
-            <version>${hibernate.version}</version>
-        </dependency>
-        <!-- Hibernate Dependency End -->
-		
-		<!-- Apache and commons Dependency Begin -->
-        <dependency>
-			<groupId>commons-codec</groupId>
-			<artifactId>commons-codec</artifactId>
-			<version>${commons.codec.version}</version>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
 		
 		<dependency>
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
-            <version>${commons.beanutils.version}</version>
         </dependency>
         
         <dependency>
-            <groupId>commons-collections</groupId>
-            <artifactId>commons-collections</artifactId>
-            <version>${commons.collections.version}</version>
-        </dependency>
-        
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-dbcp2</artifactId>
+		</dependency>
+		
         <dependency>
-            <groupId>commons-lang</groupId>
-            <artifactId>commons-lang</artifactId>
-            <version>${commons.lang.version}</version>
-        </dependency>
-        
-        <dependency>
-			<groupId>commons-fileupload</groupId>
-			<artifactId>commons-fileupload</artifactId>
-			<version>${commons.file.upload.version}</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-			<version>${commons.io.version}</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.apache.velocity</groupId>
-			<artifactId>velocity</artifactId>
-			<version>${apache.velocity.version}</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-rt-transports-http</artifactId>
-			<version>${apache.cxf.version}</version>
-			<exclusions>
-				<exclusion>
-					<artifactId>spring-web</artifactId>
-					<groupId>org.springframework</groupId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-rt-frontend-jaxws</artifactId>
-			<version>${apache.cxf.version}</version>
-			<exclusions>
-				<exclusion>
-					<artifactId>wstx-asl</artifactId>
-					<groupId>org.codehaus.woodstox</groupId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		
-		<dependency>
-  			<groupId>org.apache.httpcomponents</groupId>
-  			<artifactId>httpclient</artifactId>
-  			<version>${apache.httpclient.version}</version>
-		</dependency>
-		<!-- Apache and commons Dependency End -->
-		
-		<!-- MYSQL JAVA Connector Begin -->
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>${mysql.connector.version}</version>
-		</dependency>
-
-		<dependency>
-            <groupId>commons-dbcp</groupId>
-            <artifactId>commons-dbcp</artifactId>
-            <version>${commons.dbcp.version}</version>
-        </dependency>
-		<!-- MYSQL JAVA Connector End -->	
-		
-		<!-- Javax Composites Begin -->
-		<dependency>
-			<groupId>javax.servlet.jsp</groupId>
-			<artifactId>jsp-api</artifactId>
-			<version>${javax.jsp.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		
-		<dependency>
-			<groupId>javax.validation</groupId>
-			<artifactId>validation-api</artifactId>
-			<version>${javax.validation.version}</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>javax.inject</groupId>
-			<artifactId>javax.inject</artifactId>
-			<version>${javax.inject.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-			<version>${javax.jstl.version}</version>
-		</dependency>
-		
-		<dependency>
-	   		<groupId>javax.servlet</groupId>
-	   		<artifactId>javax.servlet-api</artifactId>
-	   		<version>${javax.servlet.version}</version>
-	   		<scope>provided</scope>
-		</dependency>
-		
-		<dependency>
-			<groupId>javax.mail</groupId>
-			<artifactId>mail</artifactId>
-			<version>${javax.mail.version}</version>
-		</dependency>
-		
-		<dependency>
 		    <groupId>javax.ws.rs</groupId>
 		    <artifactId>javax.ws.rs-api</artifactId>
-		    <version>${javax.wsrs.version}</version>
-		</dependency>
-		<!-- Javax Composites End -->
-		
-		<!-- Jackson JSON Dependency Begin -->
-		<dependency>
-		    <groupId>com.fasterxml.jackson.core</groupId>
-		    <artifactId>jackson-annotations</artifactId>
-		    <version>${jackson.fastxml.version}</version>
+		    <version>${javax-wsrs.version}</version>
 		</dependency>
 		
 		<dependency>
-		    <groupId>com.fasterxml.jackson.core</groupId>
-		    <artifactId>jackson-core</artifactId>
-		    <version>${jackson.fastxml.version}</version>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		
-		<dependency>
-		    <groupId>com.fasterxml.jackson.core</groupId>
-		    <artifactId>jackson-databind</artifactId>
-		    <version>${jackson.fastxml.version}</version>
+        <dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
 		</dependency>
-		<!-- Jackson JSON Dependency End -->
-		
-		<!-- Tag Lib Dependency -->
-		<dependency>
-			<groupId>taglibs</groupId>
-			<artifactId>standard</artifactId>
-			<version>${tag.lib.version}</version>
-		</dependency>
-		
-		<!-- AspectJ Dependency Begin -->
-		<dependency>
-			<groupId>org.aspectj</groupId>
-			<artifactId>aspectjrt</artifactId>
-			<version>${org.aspectj.version}</version>
-		</dependency>	
-		<!-- AspectJ Dependency End -->
-		
-		<!-- Slf4j & Logback Dependency Begin -->
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>jcl-over-slf4j</artifactId>
-			<version>${jcl.slf4j.version}</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-			<version>${logback.version}</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-core</artifactId>
-			<version>${logback.version}</version>
-		</dependency>
-		<!-- Slf4j & Logback Dependency End -->
-		
-		<!-- Unit Test Dependency Begin -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<!-- Unit Test Dependency End -->
-		
 		<!-- Internal Dependency Begins --> 	
 			
 		<!-- Internal Dependency Ends -->
@@ -449,30 +145,10 @@
 		<finalName>SampleAPISOAP</finalName>
 		
 		<plugins>
-			<!-- Eclipse project -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-eclipse-plugin</artifactId>
-				<version>2.9</version>
-				<configuration>
-        			<!-- Always download and attach dependencies source code -->
-					<downloadSources>true</downloadSources>
-					<downloadJavadocs>false</downloadJavadocs>
-					<!-- Avoid type mvn eclipse:eclipse -Dwtpversion=2.0 -->
-					<wtpversion>2.0</wtpversion>
-				</configuration>
- 			</plugin>
- 			
- 			<!-- Set JDK Compiler Level -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.0</version>
-				<configuration>
-					<source>${jdk.version}</source>
-					<target>${jdk.version}</target>
-				</configuration>
- 			</plugin>
+			 <plugin>
+	            <groupId>org.springframework.boot</groupId>
+	            <artifactId>spring-boot-maven-plugin</artifactId>
+	        </plugin>
 		</plugins>
 	</build>
 </project>

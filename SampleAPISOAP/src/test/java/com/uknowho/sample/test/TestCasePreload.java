@@ -9,8 +9,6 @@ import java.util.ResourceBundle;
 import org.apache.commons.beanutils.BeanUtils;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.search.FullTextSession;
-import org.hibernate.search.Search;
 import org.junit.Ignore;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -81,15 +79,4 @@ public class TestCasePreload extends AbstractTransactionalJUnit4SpringContextTes
         Session currentSession = sessionFactory.getCurrentSession();
         currentSession.flush();
     }
-
-    /**
-     * Flush search indexes, to be done after a reindex() or reindexAll() operation
-     */
- 
-    public void flushSearchIndexes() {
-        Session currentSession = sessionFactory.getCurrentSession();
-        final FullTextSession fullTextSession = Search.getFullTextSession(currentSession);
-        fullTextSession.flushToIndexes();
-    }
-    
 }

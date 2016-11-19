@@ -7,11 +7,11 @@
 	http://www.springframework.org/schema/context 
 	http://www.springframework.org/schema/context/spring-context.xsd" >
 
-	<bean class="org.springframework.orm.hibernate4.HibernateExceptionTranslator"/>
+	<bean class="org.springframework.orm.hibernate5.HibernateExceptionTranslator"/>
     <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
     
     <!-- Bean definition for Hibernate Session factory   -->
-	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean" destroy-method="destroy" >
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean" destroy-method="destroy" >
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation" value="classpath:/config/applicationHibernate.cfg.xml" />
 		
@@ -34,7 +34,7 @@
 	</bean>
 	
 	<!-- Bean definition for Springframework Transaction Manager -->
-	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+	<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	

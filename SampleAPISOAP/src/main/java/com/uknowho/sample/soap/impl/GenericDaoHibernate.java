@@ -208,11 +208,10 @@ public class GenericDaoHibernate<T,PK extends Serializable> implements GenericDa
 		
 	}
 
-	@SuppressWarnings("unchecked")
 	private T getEntity(PK ID) {
 		T entity;
 		Session hbmSession = getSession();
-    	IdentifierLoadAccess byId = hbmSession.byId(persistentClass);
+    	IdentifierLoadAccess<T> byId = hbmSession.byId(persistentClass);
     	entity = (T) byId.load(ID);
 		return entity;
 	}
