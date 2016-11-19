@@ -26,6 +26,9 @@
   * Refer to (../src/main/resources/config/applicationSecurity.xml)
   * Security implemented using spring basic authentication filter.
   
+* Spring Boot
+  * Using Spring Boot to simplify dependency management.
+  
 ### NOTE: The structure and component below is mostly same as my other REST sample. They CAN be a dependency JAR file or files depends on your application needs. This gives flexibility to swith between SOAP/REST or any other new technologies might comming. Yes, finger cross! ###
 
 * Manager + Service 
