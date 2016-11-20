@@ -14,6 +14,18 @@ import org.springframework.xml.transform.StringSource;
 
 import com.uknowho.sample.soap.config.APIPathAdvice;
 
+/**
+ * This Test class provides test cases for SOAP API test. 
+ * 
+ * Created date <19-Nov-2016>
+ * 	
+ * @version 1.0.1
+ * @since 1.0.1
+ * 
+ * @author <a href="mailto:tony87c0086@hotmail.com"> Xiaoyu Zhang (Tony) </a>
+ * 
+ */
+
 @RunWith(SpringJUnit4ClassRunner.class)
 public class MockSOAPTest extends TestCasePreload {
 
